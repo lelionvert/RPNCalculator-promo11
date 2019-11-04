@@ -46,9 +46,13 @@ public class AppTest {
     private int calculate(String expression) {
         String[] elements = expression.split(" ");
         if (expression.equals("1 2 + 3 +"))
-            return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]) + Integer.parseInt(elements[3]);
+            return addFirstExpression(elements) + Integer.parseInt(elements[3]);
         if (expression.equals("1 2 3 + +"))
-            return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]) + Integer.parseInt(elements[2]);
+            return addFirstExpression(elements) + Integer.parseInt(elements[2]);
+        return addFirstExpression(elements);
+    }
+
+    private int addFirstExpression(String[] elements) {
         return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]);
     }
 }
