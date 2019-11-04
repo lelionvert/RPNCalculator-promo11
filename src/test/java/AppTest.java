@@ -29,10 +29,6 @@ public class AppTest {
         String secondElement = s.split(" ")[1];
         if (secondElement.equals("0"))
             return Integer.parseInt(s.split(" ")[0]);
-        if (s.equals("2 0 +"))
-            return Integer.parseInt(s.split(" ")[0]);
-        if (s.equals("7 0 +"))
-            return Integer.parseInt(s.split(" ")[0]);
         return Integer.parseInt(s.split(" ")[1]);
     }
 }
