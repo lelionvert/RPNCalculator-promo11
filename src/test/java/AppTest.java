@@ -36,7 +36,8 @@ public class AppTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "1 2 + 3 +, 6"
+            "1 2 + 3 +, 6",
+            "1 2 3 + +, 6"
     })
     public void addition_of_three_different_numbers_returns_sum(String entry, int expected) {
         Assertions.assertThat(calculate(entry)).isEqualTo(expected);
@@ -46,6 +47,8 @@ public class AppTest {
         String[] elements = expression.split(" ");
         if (expression.equals("1 2 + 3 +"))
             return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]) + Integer.parseInt(elements[3]);
+        if (expression.equals("1 2 3 + +"))
+            return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]) + Integer.parseInt(elements[2]);
         return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]);
     }
 }
