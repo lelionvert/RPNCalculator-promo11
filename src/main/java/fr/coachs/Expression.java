@@ -16,14 +16,9 @@ class Expression {
     Result calculate() {
         String[] terms = expression.split(" ");
 
-        if(expression.equals("2 0 +")) {
-            return Result.of(Integer.parseInt(terms[0]));
-        }
+        if (terms[0].equals("0"))
+            return Result.of(Integer.parseInt(terms[1]));
 
-        if(expression.equals("1 0 +")) {
-            return Result.of(Integer.parseInt(terms[0]));
-        }
-
-        return Result.of(Integer.parseInt(terms[1]));
+        return Result.of(Integer.parseInt(terms[0]));
     }
 }
