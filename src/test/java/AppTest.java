@@ -26,8 +26,7 @@ public class AppTest {
     }
 
     private int calculate(String s) {
-        String firstElement = s.split(" ")[0];
-        if (firstElement.equals("0")) {
+        if (s.startsWith("0")) {
             return Integer.parseInt(s.split(" ")[1]);
         }
         return Integer.parseInt(s.split(" ")[0]);
