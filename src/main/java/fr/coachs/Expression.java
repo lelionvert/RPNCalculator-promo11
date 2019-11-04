@@ -14,8 +14,6 @@ class Expression {
     }
 
     int calculate() {
-        if (expression.startsWith("0"))
-            return Integer.parseInt(expression.split(" ")[1]);
-        throw new UnsupportedOperationException();
+        return Integer.parseInt(expression.split(" ")[1]);
     }
 }
