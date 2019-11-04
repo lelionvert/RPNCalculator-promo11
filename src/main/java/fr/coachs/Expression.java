@@ -14,14 +14,16 @@ class Expression {
     }
 
     Result calculate() {
+        String[] terms = expression.split(" ");
+
         if(expression.equals("2 0 +")) {
-            return Result.of(2);
+            return Result.of(Integer.parseInt(terms[0]));
         }
 
         if(expression.equals("1 0 +")) {
             return Result.of(1);
         }
 
-        return Result.of(Integer.parseInt(expression.split(" ")[1]));
+        return Result.of(Integer.parseInt(terms[1]));
     }
 }
