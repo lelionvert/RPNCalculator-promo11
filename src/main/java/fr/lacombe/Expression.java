@@ -1,5 +1,7 @@
 package fr.lacombe;
 
+import java.util.Objects;
+
 public class Expression {
     private final String expression;
 
@@ -26,5 +28,18 @@ public class Expression {
         if (getExpression().equals("1 2 3 + +"))
             return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]) + Integer.parseInt(elements[2]);
         return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Expression)) return false;
+        Expression that = (Expression) o;
+        return Objects.equals(expression, that.expression);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(expression);
     }
 }

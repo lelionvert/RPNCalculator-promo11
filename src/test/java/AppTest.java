@@ -13,7 +13,7 @@ public class AppTest {
     })
     public void addition_of_zero_and_n_number_returns_n(String entry, String expected) {
         Expression expected1 = new Expression(expected);
-        Assertions.assertThat(new Expression(entry).calculate3().toInt()).isEqualTo(expected1.toInt());
+        Assertions.assertThat(new Expression(entry).calculate3()).isEqualTo(expected1);
     }
 
     @ParameterizedTest
