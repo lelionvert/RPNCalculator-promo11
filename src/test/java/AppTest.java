@@ -34,10 +34,10 @@ public class AppTest {
     }
 
     private int calculate(String expression) {
-        if (expression.equals("1 4 +")) {
-            return 5;
-        }
         String[] elements = expression.split(" ");
+        if (expression.equals("1 4 +")) {
+            return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]);
+        }
         if (expression.startsWith("0")) {
             return Integer.parseInt(elements[1]);
         }
