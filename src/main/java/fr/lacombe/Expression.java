@@ -12,6 +12,10 @@ public class Expression {
     }
 
     public int calculate() {
+        return calculate2();
+    }
+
+    private int calculate2() {
         String[] elements = getExpression().split(" ");
         if (getExpression().equals("1 2 + 3 +"))
             return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]) + Integer.parseInt(elements[3]);
