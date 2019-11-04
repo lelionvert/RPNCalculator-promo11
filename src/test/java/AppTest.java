@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 public class AppTest {
     @Test
-    public void test() {
+    public void addition_of_two_zeros_returns_0() {
         Assertions.assertThat(calculate("0 0 +")).isEqualTo(0);
     }
 
