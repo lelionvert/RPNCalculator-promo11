@@ -32,5 +32,8 @@ class ExpressionTest {
         assertThat(Expression.of("1 0 +").calculate()).isEqualTo(Result.of(1));
     }
 
-
+    @Test
+    void addition_of_two_numbers_should_return_the_sum() {
+        assertThat(Expression.of("1 2 +").calculate()).isEqualTo(Result.of(3));
+    }
 }
