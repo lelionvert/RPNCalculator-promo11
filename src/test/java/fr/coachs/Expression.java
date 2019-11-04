@@ -1,15 +1,15 @@
 package fr.coachs;
 
-public class Expression {
+class Expression {
 
     private final String expression;
 
-    public Expression(String expression) {
+    private Expression(String expression) {
 
         this.expression = expression;
     }
 
-    public static Expression of(String expression) {
+    static Expression of(String expression) {
         return new Expression(expression);
     }
 
