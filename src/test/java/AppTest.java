@@ -35,12 +35,6 @@ public class AppTest {
 
     private int calculate(String expression) {
         String[] elements = expression.split(" ");
-        if (expression.equals("1 4 +")) {
-            return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]);
-        }
-        if (expression.startsWith("0")) {
-            return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]);
-        }
         return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]);
     }
 }
