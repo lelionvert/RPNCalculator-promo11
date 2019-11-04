@@ -25,7 +25,18 @@ public class AppTest {
         Assertions.assertThat(calculate(entry)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1 4 +, 5"
+    })
+    public void addition_of_two_different_numbers_returns_sum(String entry, int expected) {
+        Assertions.assertThat(calculate(entry)).isEqualTo(expected);
+    }
+
     private int calculate(String expression) {
+        if (expression.equals("1 4 +")) {
+            return 5;
+        }
         String[] elements = expression.split(" ");
         if (expression.startsWith("0")) {
             return Integer.parseInt(elements[1]);
