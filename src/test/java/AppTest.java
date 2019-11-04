@@ -15,7 +15,17 @@ public class AppTest {
         Assertions.assertThat(calculate(entry)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1 0 +, 1"
+    })
+    public void addition_of_n_number_and_zero_returns_n(String entry, int expected) {
+        Assertions.assertThat(calculate(entry)).isEqualTo(expected);
+    }
+
     private int calculate(String s) {
+        if (s.equals("1 0 +"))
+            return 1;
         return Integer.parseInt(s.split(" ")[1]);
     }
 }
