@@ -25,14 +25,14 @@ public class AppTest {
 
     private int calculate(String s) {
         if(s.equals("0 5 +")){
-            return 5;
+            return Integer.parseInt(s.split(" ")[1]);
         }
         if(s.equals("0 4 +")){
-            return 4;
+            return Integer.parseInt(s.split(" ")[1]);
         }
         if(s.equals("0 3 +")){
-            return 3;
+            return Integer.parseInt(s.split(" ")[1]);
         }
-        return 0;
+        return Integer.parseInt(s.split(" ")[1]);
     }
 }
