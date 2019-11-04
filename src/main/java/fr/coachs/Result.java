@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Result {
 
+    static final Result ZERO = Result.of(0);
     private final int value;
 
     private Result(int value) {
