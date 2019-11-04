@@ -15,11 +15,11 @@ class ExpressionTest {
 
     @Test
     void addition_of_0_and_a_number_should_return_the_number() {
-        assertThat(Expression.of("0 1 +").calculate()).isEqualTo(1);
+        assertThat(Expression.of("0 1 +").calculate()).isEqualTo(Result.of(1));
     }
 
     @Test
     void addition_of_0_and_a_number_should_return_the_number_1() {
-        assertThat(Expression.of("0 2 +").calculate()).isEqualTo(2);
+        assertThat(Expression.of("0 2 +").calculate()).isEqualTo(Result.of(2));
     }
 }
