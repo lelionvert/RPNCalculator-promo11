@@ -13,10 +13,6 @@ public class Expression {
         return expression;
     }
 
-    public int toInt() {
-        return Integer.parseInt(expression);
-    }
-
     public Expression calculate3() {
         return new Expression(String.valueOf(calculate2()));
     }
