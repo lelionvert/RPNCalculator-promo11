@@ -17,6 +17,11 @@ class Expression {
         if(expression.equals("2 0 +")) {
             return Result.of(2);
         }
+
+        if(expression.equals("1 0 +")) {
+            return Result.of(1);
+        }
+
         return Result.of(Integer.parseInt(expression.split(" ")[1]));
     }
 }

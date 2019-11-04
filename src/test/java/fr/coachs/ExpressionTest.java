@@ -27,4 +27,10 @@ class ExpressionTest {
     }
 
 
+    @Test
+    void addition_of_a_number_and_0_should_return_the_number_1() {
+        assertThat(Expression.of("1 0 +").calculate()).isEqualTo(Result.of(1));
+    }
+
+
 }
