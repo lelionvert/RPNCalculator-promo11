@@ -20,4 +20,11 @@ class ExpressionTest {
     void addition_of_0_and_a_number_should_return_the_number_1() {
         assertThat(Expression.of("0 2 +").calculate()).isEqualTo(Result.of(2));
     }
+
+    @Test
+    void addition_of_a_number_and_0_should_return_the_number() {
+        assertThat(Expression.of("2 0 +").calculate()).isEqualTo(Result.of(2));
+    }
+
+
 }
