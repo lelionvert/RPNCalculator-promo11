@@ -27,7 +27,7 @@ public class AppTest {
 
     private int calculate(String s) {
         if (s.equals("1 0 +"))
-            return 1;
+            return Integer.parseInt(s.split(" ")[0]);
         if (s.equals("2 0 +"))
             return 2;
         if (s.equals("7 0 +"))
