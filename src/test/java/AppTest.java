@@ -1,9 +1,8 @@
 import fr.lacombe.Expression;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class AppTest {
     @ParameterizedTest
@@ -23,16 +22,16 @@ public class AppTest {
             "2 0 +, 2",
             "7 0 +, 7"
     })
-    public void addition_of_n_number_and_zero_returns_n(String entry, int expected) {
-        assertThat(new Expression(entry).calculate3().toInt()).isEqualTo(expected);
+    public void addition_of_n_number_and_zero_returns_n(String entry, String expected) {
+        assertThat(new Expression(entry).calculate3()).isEqualTo(new Expression(expected));
     }
 
     @ParameterizedTest
     @CsvSource(value = {
             "1 4 +, 5"
     })
-    public void addition_of_two_different_numbers_returns_sum(String entry, int expected) {
-        assertThat(new Expression(entry).calculate3().toInt()).isEqualTo(expected);
+    public void addition_of_two_different_numbers_returns_sum(String entry, String expected) {
+        assertThat(new Expression(entry).calculate3()).isEqualTo(new Expression(expected));
     }
 
 
@@ -41,8 +40,8 @@ public class AppTest {
             "1 2 + 3 +, 6",
             "1 2 3 + +, 6"
     })
-    public void addition_of_three_different_numbers_returns_sum(String entry, int expected) {
-        assertThat(new Expression(entry).calculate3().toInt()).isEqualTo(expected);
+    public void addition_of_three_different_numbers_returns_sum(String entry, String expected) {
+        assertThat(new Expression(entry).calculate3()).isEqualTo(new Expression(expected));
     }
 
 }
