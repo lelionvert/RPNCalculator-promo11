@@ -4,15 +4,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class AppTest {
-    @Test
-    public void addition_of_two_zeros_returns_0() {
-        Assertions.assertThat(calculate("0 0 +")).isEqualTo(0);
-    }
-
     @ParameterizedTest
     @CsvSource(value = {
-            "0 4 +, 4",
+            "0 0 +, 0",
             "0 3 +, 3",
+            "0 4 +, 4",
             "0 5 +, 5"
     })
     public void addition_of_zero_and_n_number_returns_n(String entry, int expected) {
