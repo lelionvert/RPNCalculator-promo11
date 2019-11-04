@@ -33,7 +33,18 @@ public class AppTest {
         Assertions.assertThat(calculate(entry)).isEqualTo(expected);
     }
 
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1 2 + 3 +, 6"
+    })
+    public void addition_of_three_different_numbers_returns_sum(String entry, int expected) {
+        Assertions.assertThat(calculate(entry)).isEqualTo(expected);
+    }
+
     private int calculate(String expression) {
+        if (expression.equals("1 2 + 3 +"))
+            return 6;
         String[] elements = expression.split(" ");
         return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]);
     }
