@@ -1,5 +1,6 @@
 package fr.coachs;
 
+import fr.coachs.Expression;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
