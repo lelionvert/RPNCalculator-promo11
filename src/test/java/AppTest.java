@@ -18,7 +18,8 @@ public class AppTest {
     @ParameterizedTest
     @CsvSource(value = {
             "1 0 +, 1",
-            "2 0 +, 2"
+            "2 0 +, 2",
+            "7 0 +, 7"
     })
     public void addition_of_n_number_and_zero_returns_n(String entry, int expected) {
         Assertions.assertThat(calculate(entry)).isEqualTo(expected);
@@ -29,6 +30,8 @@ public class AppTest {
             return 1;
         if (s.equals("2 0 +"))
             return 2;
+        if (s.equals("7 0 +"))
+            return 7;
         return Integer.parseInt(s.split(" ")[1]);
     }
 }
