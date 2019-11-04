@@ -8,7 +8,7 @@ public class AppTest {
     }
 
     @Test
-    public void test2() {
+    public void addition_of_zero_and_n_number_returns_n() {
         Assertions.assertThat(calculate("0 4 +")).isEqualTo(4);
     }
 
