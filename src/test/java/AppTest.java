@@ -1,5 +1,5 @@
+import fr.lacombe.Expression;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -12,7 +12,7 @@ public class AppTest {
             "0 5 +, 5"
     })
     public void addition_of_zero_and_n_number_returns_n(String entry, int expected) {
-        Assertions.assertThat(calculate(entry)).isEqualTo(expected);
+        Assertions.assertThat(calculate(new Expression(entry))).isEqualTo(expected);
     }
 
     @ParameterizedTest
@@ -22,7 +22,7 @@ public class AppTest {
             "7 0 +, 7"
     })
     public void addition_of_n_number_and_zero_returns_n(String entry, int expected) {
-        Assertions.assertThat(calculate(entry)).isEqualTo(expected);
+        Assertions.assertThat(calculate(new Expression(entry))).isEqualTo(expected);
     }
 
     @ParameterizedTest
@@ -30,7 +30,7 @@ public class AppTest {
             "1 4 +, 5"
     })
     public void addition_of_two_different_numbers_returns_sum(String entry, int expected) {
-        Assertions.assertThat(calculate(entry)).isEqualTo(expected);
+        Assertions.assertThat(calculate(new Expression(entry))).isEqualTo(expected);
     }
 
 
@@ -40,14 +40,14 @@ public class AppTest {
             "1 2 3 + +, 6"
     })
     public void addition_of_three_different_numbers_returns_sum(String entry, int expected) {
-        Assertions.assertThat(calculate(entry)).isEqualTo(expected);
+        Assertions.assertThat(calculate(new Expression(entry))).isEqualTo(expected);
     }
 
-    private int calculate(String expression) {
-        String[] elements = expression.split(" ");
-        if (expression.equals("1 2 + 3 +"))
+    private int calculate(Expression expression1) {
+        String[] elements = expression1.getExpression().split(" ");
+        if (expression1.getExpression().equals("1 2 + 3 +"))
             return addFirstExpression(elements) + Integer.parseInt(elements[3]);
-        if (expression.equals("1 2 3 + +"))
+        if (expression1.getExpression().equals("1 2 3 + +"))
             return addFirstExpression(elements) + Integer.parseInt(elements[2]);
         return addFirstExpression(elements);
     }
