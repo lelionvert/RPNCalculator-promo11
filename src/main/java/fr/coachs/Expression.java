@@ -13,7 +13,7 @@ class Expression {
         return new Expression(expression);
     }
 
-    int calculate() {
-        return Integer.parseInt(expression.split(" ")[1]);
+    Result calculate() {
+        return Result.of(Integer.parseInt(expression.split(" ")[1]));
     }
 }
