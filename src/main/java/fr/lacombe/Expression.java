@@ -11,15 +11,11 @@ public class Expression {
         return expression;
     }
 
-    public int calculate() {
-        return calculate3().toInt();
-    }
-
-    private int toInt() {
+    public int toInt() {
         return Integer.parseInt(expression);
     }
 
-    private Expression calculate3() {
+    public Expression calculate3() {
         return new Expression(String.valueOf(calculate2()));
     }
 
