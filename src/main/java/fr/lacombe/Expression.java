@@ -12,7 +12,15 @@ public class Expression {
     }
 
     public int calculate() {
-        return calculate2();
+        return calculate3().toInt();
+    }
+
+    private int toInt() {
+        return Integer.parseInt(expression);
+    }
+
+    private Expression calculate3() {
+        return new Expression(String.valueOf(calculate2()));
     }
 
     private int calculate2() {
