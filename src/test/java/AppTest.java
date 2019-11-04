@@ -11,8 +11,9 @@ public class AppTest {
             "0 4 +, 4",
             "0 5 +, 5"
     })
-    public void addition_of_zero_and_n_number_returns_n(String entry, int expected) {
-        Assertions.assertThat(new Expression(entry).calculate3().toInt()).isEqualTo(expected);
+    public void addition_of_zero_and_n_number_returns_n(String entry, String expected) {
+        Expression expected1 = new Expression(expected);
+        Assertions.assertThat(new Expression(entry).calculate3().toInt()).isEqualTo(expected1.toInt());
     }
 
     @ParameterizedTest
