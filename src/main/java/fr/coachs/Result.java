@@ -3,14 +3,14 @@ package fr.coachs;
 import java.util.Objects;
 
 public class Result {
+
     private final int value;
 
     private Result(int value) {
-
         this.value = value;
     }
 
-    public static Result of(int value) {
+    static Result of(int value) {
         return new Result(value);
     }
 
