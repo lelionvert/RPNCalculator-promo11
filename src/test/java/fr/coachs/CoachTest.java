@@ -9,4 +9,9 @@ public class CoachTest {
         Assertions.assertThat(Expression.of("0 0 +").calculate()).isEqualTo(0);
     }
 
+    @Test
+    void addition_of_0_and_a_number_should_return_the_number() {
+        Assertions.assertThat(Expression.of("0 1 +").calculate())
+                .isEqualTo(1);
+    }
 }
