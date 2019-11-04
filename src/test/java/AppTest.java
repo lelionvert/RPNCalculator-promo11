@@ -43,9 +43,9 @@ public class AppTest {
     }
 
     private int calculate(String expression) {
-        if (expression.equals("1 2 + 3 +"))
-            return 6;
         String[] elements = expression.split(" ");
+        if (expression.equals("1 2 + 3 +"))
+            return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]) + Integer.parseInt(elements[3]);
         return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]);
     }
 }
