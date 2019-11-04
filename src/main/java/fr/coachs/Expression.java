@@ -21,7 +21,7 @@ class Expression {
         }
 
         if(expression.equals("1 0 +")) {
-            return Result.of(1);
+            return Result.of(Integer.parseInt(terms[0]));
         }
 
         return Result.of(Integer.parseInt(terms[1]));
