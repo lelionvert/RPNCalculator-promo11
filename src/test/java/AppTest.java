@@ -25,10 +25,11 @@ public class AppTest {
         Assertions.assertThat(calculate(entry)).isEqualTo(expected);
     }
 
-    private int calculate(String s) {
-        if (s.startsWith("0")) {
-            return Integer.parseInt(s.split(" ")[1]);
+    private int calculate(String expression) {
+        String[] elements = expression.split(" ");
+        if (expression.startsWith("0")) {
+            return Integer.parseInt(elements[1]);
         }
-        return Integer.parseInt(s.split(" ")[0]);
+        return Integer.parseInt(elements[0]);
     }
 }
