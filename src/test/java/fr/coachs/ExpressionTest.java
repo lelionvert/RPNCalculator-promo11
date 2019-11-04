@@ -10,7 +10,7 @@ class ExpressionTest {
 
     @Test
     void addition_of_0_and_0_should_return_0() {
-        assertThat(Expression.of("0 0 +").calculate()).isEqualTo(0);
+        assertThat(Expression.of("0 0 +").calculate()).isEqualTo(Result.of(0));
     }
 
     @Test
