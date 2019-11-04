@@ -31,7 +31,7 @@ public class AppTest {
         if (s.equals("2 0 +"))
             return Integer.parseInt(s.split(" ")[0]);
         if (s.equals("7 0 +"))
-            return 7;
+            return Integer.parseInt(s.split(" ")[0]);
         return Integer.parseInt(s.split(" ")[1]);
     }
 }
