@@ -26,9 +26,10 @@ public class AppTest {
     }
 
     private int calculate(String s) {
-        String secondElement = s.split(" ")[1];
-        if (secondElement.equals("0"))
-            return Integer.parseInt(s.split(" ")[0]);
-        return Integer.parseInt(s.split(" ")[1]);
+        String firstElement = s.split(" ")[0];
+        if (firstElement.equals("0")) {
+            return Integer.parseInt(s.split(" ")[1]);
+        }
+        return Integer.parseInt(s.split(" ")[0]);
     }
 }
