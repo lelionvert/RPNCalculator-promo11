@@ -10,7 +10,7 @@ public class AppTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0 4 +, 4", "0 3 +, 3"})
+    @CsvSource(value = {"0 4 +, 4", "0 3 +, 3", "0 5 +, 5"})
     public void addition_of_zero_and_n_number_returns_n(String entry, int expected) {
         Assertions.assertThat(calculate(entry)).isEqualTo(expected);
     }
