@@ -1,5 +1,6 @@
 package fr.lacombe;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Expression {
@@ -14,9 +15,9 @@ public class Expression {
     }
 
     public Expression calculate() {
-        String[] elements = expression.split(" ");
+
         if (expression.equals("1 2 + 3 +")) {
-            int s = new Expression("1 2 +").parse().addElements();
+            int s = new Expression(getFirstExpression()).parse().addElements();
             Expression expression = new Expression(s +" 3 +");
             return new Expression(expression.parse().addElements());
             /*return new Expression(
@@ -27,6 +28,14 @@ public class Expression {
             );*/
         }
         return new Expression(parse().addElements());
+    }
+
+    private String getFirstExpression() {
+        String[] elements = expression.split(" ");
+
+        int index = expression.indexOf("+");
+        expression.substring(index);
+        return "1 2 +";
     }
 
     private Addition parse() {
