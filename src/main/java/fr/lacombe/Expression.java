@@ -22,9 +22,7 @@ public class Expression {
         if (elements.size() > 5) {
             int firstExpression = getFirstExpression().parse().addElements();
             Expression nextExpression = getNextExpression(firstExpression);
-            firstExpression = nextExpression.getFirstExpression().parse().addElements();
-            nextExpression =  nextExpression.getNextExpression(firstExpression);
-            return new Expression(nextExpression.parse().addElements());
+            return nextExpression.calculate();
         }
 
         if (elements.size() > 3) {
