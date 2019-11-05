@@ -30,7 +30,8 @@ public class Expression {
     }
 
     private boolean containsMultipleOperations() {
-        return elements.size() > 3;
+        return elements.stream().filter(element -> element.equals("+"))
+                .count() > 1;
     }
 
     private Expression getNextExpression(int firstExpression) {
