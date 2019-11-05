@@ -44,7 +44,7 @@ public class AppTest {
             "1 2 + 4 +, 7",
             "1 2 + 3 + 4 +, 10"
     })
-    public void addition_of_three_different_numbers_returns_sum(String entry, String expected) {
+    public void addition_of_multiple_different_numbers_returns_sum(String entry, String expected) {
         assertThat(new Expression(entry).calculate())
                 .isEqualTo(new Expression(expected));
     }
