@@ -46,10 +46,9 @@ public class Expression {
     }
 
     private Addition parse() {
-        String[] elements = expression.split(" ");
         return new Addition(
-                Integer.parseInt(elements[0]),
-                Integer.parseInt(elements[1])
+                Integer.parseInt(elements.get(0)),
+                Integer.parseInt(elements.get(1))
         );
     }
 
