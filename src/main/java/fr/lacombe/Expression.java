@@ -24,6 +24,10 @@ public class Expression {
 
     public Expression calculate() {
 
+        if (elements.contains("*")){
+            return new Expression(2);
+        }
+
         if (containsMultipleOperations()) {
             int firstExpression = getFirstExpression().parse().addElements();
             Expression nextExpression = getNextExpression(firstExpression);

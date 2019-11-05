@@ -1,5 +1,6 @@
 import fr.lacombe.Expression;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -49,4 +50,11 @@ public class AppTest {
                 .isEqualTo(new Expression(expected));
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1 2 *, 2"
+    })
+    void multiplication_of_multiple_different_numbers_return_product(String entry, String expected) {
+        assertThat(new Expression(entry).calculate()).isEqualTo(new Expression(expected));
+    }
 }
