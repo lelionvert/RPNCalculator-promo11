@@ -32,9 +32,8 @@ public class Expression {
         List<String> list = List.of(elements);
         int index = list.indexOf("+");
 
-        list.subList(index, list.size()).stream()
-                .collect(Collectors.joining(" "));
-        return firstExpression + expression.substring(5);
+        String collect = String.join(" ", list.subList(index + 1, list.size()));
+        return firstExpression + " " + collect;
     }
 
     private Expression getFirstExpression() {
