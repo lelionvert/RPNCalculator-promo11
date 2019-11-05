@@ -9,13 +9,15 @@ import static java.util.Arrays.stream;
 
 public class Expression {
     private final String expression;
+    private final List<String> elements;
 
     public Expression(String expression) {
+        this.elements = List.of(expression.split(" "));
         this.expression = expression;
     }
 
     private Expression(int expression) {
-        this.expression = valueOf(expression);
+        this(valueOf(expression));
     }
 
     public Expression calculate() {
