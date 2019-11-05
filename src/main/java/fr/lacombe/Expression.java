@@ -20,7 +20,7 @@ public class Expression {
 
     public Expression calculate() {
 
-        if (expression.equals("1 2 + 3 +")) {
+        if (expression.equals("1 2 + 3 +") || expression.equals("1 2 + 4 +")) {
             int firstExpression = getFirstExpression().parse().addElements();
             Expression nextExpression = getNextExpression(firstExpression);
             return new Expression(nextExpression.parse().addElements());

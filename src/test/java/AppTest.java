@@ -40,7 +40,8 @@ public class AppTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "1 2 + 3 +, 6"
+            "1 2 + 3 +, 6",
+            "1 2 + 4 +, 7"
     })
     public void addition_of_three_different_numbers_returns_sum(String entry, String expected) {
         assertThat(new Expression(entry).calculate())
