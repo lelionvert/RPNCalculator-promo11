@@ -1,10 +1,11 @@
 package fr.lacombe;
 
-public class Addition {
+class Addition {
+    static final String OPERATOR = "+";
     private final int first;
     private final int second;
 
-    public Addition(int first, int second) {
+    Addition(int first, int second) {
         this.first = first;
         this.second = second;
     }

@@ -40,17 +40,17 @@ public class Expression {
     }
 
     private Predicate<String> isOperator() {
-        return element -> element.equals("+");
+        return element -> element.equals(Addition.OPERATOR);
     }
 
     private Expression getNextExpression(int firstExpression) {
-        int index = elements.indexOf("+");
+        int index = elements.indexOf(Addition.OPERATOR);
 
         return new Expression(firstExpression + DELIMITER + join(DELIMITER, elements.subList(index + 1, elements.size())));
     }
 
     private Expression getFirstExpression() {
-        int index = elements.indexOf("+");
+        int index = elements.indexOf(Addition.OPERATOR);
 
         return new Expression(elements.stream()
                 .skip(index - NUMBER_OF_OPERANDS)
