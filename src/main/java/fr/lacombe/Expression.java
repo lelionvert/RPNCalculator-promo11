@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static java.util.Arrays.*;
+
 public class Expression {
     private final String expression;
 
@@ -20,28 +22,21 @@ public class Expression {
     public Expression calculate() {
 
         if (expression.equals("1 2 + 3 +")) {
-            int s = new Expression(getFirstExpression()).parse().addElements();
-            Expression expression = new Expression(s +" 3 +");
+            int firstExpression = getFirstExpression().parse().addElements();
+            Expression expression = new Expression(firstExpression +" 3 +");
             return new Expression(expression.parse().addElements());
-            /*return new Expression(
-                    new Addition(
-                            parse().addElements(),
-                            Integer.parseInt(elements[3])
-                    ).addElements()
-            );*/
         }
         return new Expression(parse().addElements());
     }
 
-    private String getFirstExpression() {
+    private Expression getFirstExpression() {
         String[] elements = expression.split(" ");
         int index = List.of(elements).indexOf("+");
 
-        return Arrays.stream(
-                elements
-        ).skip(index - 2)
+        return new Expression(stream(elements)
+                .skip(index - 2)
                 .limit(3)
-                .collect(Collectors.joining(" "));
+                .collect(Collectors.joining(" ")));
     }
 
     private Addition parse() {
