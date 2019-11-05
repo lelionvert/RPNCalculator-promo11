@@ -3,16 +3,15 @@ package fr.lacombe;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static java.lang.String.join;
 import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.joining;
 
 public class Expression {
-    public static final int NUMBER_OF_OPERANDS = 2;
-    public static final int OPERATION_SIZE = 3;
-    public static final String DELIMITER = " ";
+    private static final int NUMBER_OF_OPERANDS = 2;
+    private static final int OPERATION_SIZE = 3;
+    private static final String DELIMITER = " ";
     private final List<String> elements;
 
     public Expression(String expression) {
