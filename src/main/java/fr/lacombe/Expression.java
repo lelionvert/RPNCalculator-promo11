@@ -7,12 +7,16 @@ import java.util.stream.Collectors;
 
 import static java.lang.String.join;
 import static java.lang.String.valueOf;
+import static java.util.stream.Collectors.joining;
 
 public class Expression {
+    public static final int NUMBER_OF_OPERANDS = 2;
+    public static final int OPERATION_SIZE = 3;
+    public static final String DELIMITER = " ";
     private final List<String> elements;
 
     public Expression(String expression) {
-        this.elements = List.of(expression.split(" "));
+        this.elements = List.of(expression.split(DELIMITER));
     }
 
     private Expression(int expression) {
@@ -42,16 +46,16 @@ public class Expression {
     private Expression getNextExpression(int firstExpression) {
         int index = elements.indexOf("+");
 
-        return new Expression(firstExpression + " " + join(" ", elements.subList(index + 1, elements.size())));
+        return new Expression(firstExpression + DELIMITER + join(DELIMITER, elements.subList(index + 1, elements.size())));
     }
 
     private Expression getFirstExpression() {
         int index = elements.indexOf("+");
 
         return new Expression(elements.stream()
-                .skip(index - 2)
-                .limit(3)
-                .collect(Collectors.joining(" ")));
+                .skip(index - NUMBER_OF_OPERANDS)
+                .limit(OPERATION_SIZE)
+                .collect(joining(DELIMITER)));
     }
 
     private Addition parse() {
