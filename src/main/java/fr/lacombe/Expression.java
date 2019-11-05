@@ -1,7 +1,10 @@
 package fr.lacombe;
 
+import java.awt.*;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Expression {
     private final String expression;
@@ -32,10 +35,13 @@ public class Expression {
 
     private String getFirstExpression() {
         String[] elements = expression.split(" ");
+        int index = List.of(elements).indexOf("+");
 
-        int index = expression.indexOf("+");
-        expression.substring(index);
-        return "1 2 +";
+        return Arrays.stream(
+                elements
+        ).skip(index - 2)
+                .limit(3)
+                .collect(Collectors.joining(" "));
     }
 
     private Addition parse() {
