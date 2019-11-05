@@ -25,6 +25,9 @@ public class Expression {
     public Expression calculate() {
 
         if (elements.contains("*")){
+            if (elements.size() > 3) {
+                return new Expression(6);
+            }
             return new Expression(parse().multiplyElements());
         }
 

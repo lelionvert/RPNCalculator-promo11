@@ -52,7 +52,8 @@ public class AppTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "1 2 *, 2"
+            "1 2 *, 2",
+            "1 2 * 3 *, 6",
     })
     void multiplication_of_multiple_different_numbers_return_product(String entry, String expected) {
         assertThat(new Expression(entry).calculate()).isEqualTo(new Expression(expected));
