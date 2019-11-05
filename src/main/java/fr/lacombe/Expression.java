@@ -19,16 +19,11 @@ public class Expression {
     }
 
     public Expression calculate() {
-        if (elements.size() > 5) {
-            int firstExpression = getFirstExpression().parse().addElements();
-            Expression nextExpression = getNextExpression(firstExpression);
-            return nextExpression.calculate();
-        }
 
         if (elements.size() > 3) {
             int firstExpression = getFirstExpression().parse().addElements();
             Expression nextExpression = getNextExpression(firstExpression);
-            return new Expression(nextExpression.parse().addElements());
+            return nextExpression.calculate();
         }
 
         return new Expression(parse().addElements());
