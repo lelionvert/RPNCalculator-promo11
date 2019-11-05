@@ -21,10 +21,14 @@ public class Expression {
 
         if (expression.equals("1 2 + 3 +")) {
             int firstExpression = getFirstExpression().parse().addElements();
-            Expression nextExpression = new Expression(firstExpression + " 3 +");
+            Expression nextExpression = new Expression(getNextExpression(firstExpression));
             return new Expression(nextExpression.parse().addElements());
         }
         return new Expression(parse().addElements());
+    }
+
+    private String getNextExpression(int firstExpression) {
+        return firstExpression + expression.substring(5);
     }
 
     private Expression getFirstExpression() {
