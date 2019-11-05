@@ -16,7 +16,9 @@ public class Expression {
     public Expression calculate() {
         String[] elements = expression.split(" ");
         if (expression.equals("1 2 + 3 +")) {
-            return new Expression(new Expression("3 3 +").parse().addElements());
+            int s = new Expression("1 2 +").parse().addElements();
+            Expression expression = new Expression(s +" 3 +");
+            return new Expression(expression.parse().addElements());
             /*return new Expression(
                     new Addition(
                             parse().addElements(),
