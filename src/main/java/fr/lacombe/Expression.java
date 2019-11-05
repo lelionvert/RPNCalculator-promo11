@@ -2,6 +2,7 @@ package fr.lacombe;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static java.lang.String.join;
@@ -30,8 +31,12 @@ public class Expression {
     }
 
     private boolean containsMultipleOperations() {
-        return elements.stream().filter(element -> element.equals("+"))
+        return elements.stream().filter(isOperator())
                 .count() > 1;
+    }
+
+    private Predicate<String> isOperator() {
+        return element -> element.equals("+");
     }
 
     private Expression getNextExpression(int firstExpression) {
