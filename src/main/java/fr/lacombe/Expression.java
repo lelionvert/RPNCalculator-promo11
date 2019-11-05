@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static java.lang.String.*;
 import static java.util.Arrays.stream;
 
 public class Expression {
@@ -14,7 +15,7 @@ public class Expression {
     }
 
     private Expression(int expression) {
-        this.expression = String.valueOf(expression);
+        this.expression = valueOf(expression);
     }
 
     public Expression calculate() {
@@ -28,12 +29,10 @@ public class Expression {
     }
 
     private String getNextExpression(int firstExpression) {
-        String[] elements = expression.split(" ");
-        List<String> list = List.of(elements);
-        int index = list.indexOf("+");
+        List<String> elements = List.of(expression.split(" "));
+        int index = elements.indexOf("+");
 
-        String collect = String.join(" ", list.subList(index + 1, list.size()));
-        return firstExpression + " " + collect;
+        return firstExpression + " " + join(" ", elements.subList(index + 1, elements.size()));
     }
 
     private Expression getFirstExpression() {
