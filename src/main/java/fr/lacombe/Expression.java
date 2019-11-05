@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-import static fr.lacombe.Operation.*;
+import static fr.lacombe.Operation.ADDITION;
+import static fr.lacombe.Operation.MULTIPLICATION;
 import static java.lang.String.join;
 import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.joining;
@@ -24,23 +25,12 @@ public class Expression {
     }
 
     public Expression calculate() {
-
-        if (getFirstOperator().equals(MULTIPLICATION)) {
-            if (containsMultipleOperations()) {
-                int firstExpression = getFirstExpression(getFirstOperator()).parse().operate(getFirstOperator());
-                Expression nextExpression = getNextExpression(firstExpression, getFirstOperator());
-                return nextExpression.calculate();
-            }
-            return new Expression(parse().operate(getFirstOperator()));
-        }
-
         if (containsMultipleOperations()) {
-            int firstExpression = getFirstExpression(ADDITION).parse().addElements();
-            Expression nextExpression = getNextExpression(firstExpression, ADDITION);
+            int firstExpression = getFirstExpression(getFirstOperator()).parse().operate(getFirstOperator());
+            Expression nextExpression = getNextExpression(firstExpression, getFirstOperator());
             return nextExpression.calculate();
         }
-
-        return new Expression(parse().addElements());
+        return new Expression(parse().operate(getFirstOperator()));
     }
 
     private String getFirstOperator() {
