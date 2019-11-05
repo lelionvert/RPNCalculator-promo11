@@ -1,12 +1,10 @@
 package fr.lacombe;
 
-import java.awt.*;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static java.util.Arrays.*;
+import static java.util.Arrays.stream;
 
 public class Expression {
     private final String expression;
@@ -23,8 +21,8 @@ public class Expression {
 
         if (expression.equals("1 2 + 3 +")) {
             int firstExpression = getFirstExpression().parse().addElements();
-            Expression expression = new Expression(firstExpression +" 3 +");
-            return new Expression(expression.parse().addElements());
+            Expression nextExpression = new Expression(firstExpression + " 3 +");
+            return new Expression(nextExpression.parse().addElements());
         }
         return new Expression(parse().addElements());
     }
