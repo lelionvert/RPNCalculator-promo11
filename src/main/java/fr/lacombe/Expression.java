@@ -17,19 +17,13 @@ public class Expression {
         String[] elements = getExpression().split(" ");
         if (expression.equals("1 2 + 3 +")) {
             return new Expression(String.valueOf(
-                    addElements(elements)
-                            + Integer.parseInt(elements[3])
+                    new Addition(new Addition(Integer.parseInt(elements[0]), Integer.parseInt(elements[1])).addElements(), Integer.parseInt(elements[3])).addElements()
             ));
         }
         return new Expression(
                 String.valueOf(
-                        addElements(elements)
+                        new Addition(Integer.parseInt(elements[0]), Integer.parseInt(elements[1])).addElements()
                 ));
-    }
-
-    private int addElements(String[] elements) {
-        return Integer.parseInt(elements[0])
-                + Integer.parseInt(elements[1]);
     }
 
     @Override
