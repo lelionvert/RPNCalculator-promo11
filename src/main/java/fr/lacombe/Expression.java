@@ -22,17 +22,17 @@ public class Expression {
 
         if (expression.equals("1 2 + 3 +")) {
             int firstExpression = getFirstExpression().parse().addElements();
-            Expression nextExpression = new Expression(getNextExpression(firstExpression));
+            Expression nextExpression = getNextExpression(firstExpression);
             return new Expression(nextExpression.parse().addElements());
         }
         return new Expression(parse().addElements());
     }
 
-    private String getNextExpression(int firstExpression) {
+    private Expression getNextExpression(int firstExpression) {
         List<String> elements = List.of(expression.split(" "));
         int index = elements.indexOf("+");
 
-        return firstExpression + " " + join(" ", elements.subList(index + 1, elements.size()));
+        return new Expression(firstExpression + " " + join(" ", elements.subList(index + 1, elements.size())));
     }
 
     private Expression getFirstExpression() {
