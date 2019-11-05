@@ -9,21 +9,29 @@ public class Expression {
         this.expression = expression;
     }
 
-    public String getExpression() {
-        return expression;
+    private Expression(int expression) {
+        this.expression = String.valueOf(expression);
     }
 
     public Expression calculate() {
-        String[] elements = getExpression().split(" ");
+        String[] elements = expression.split(" ");
         if (expression.equals("1 2 + 3 +")) {
-            return new Expression(String.valueOf(
-                    new Addition(new Addition(Integer.parseInt(elements[0]), Integer.parseInt(elements[1])).addElements(), Integer.parseInt(elements[3])).addElements()
-            ));
+            return new Expression(
+                    new Addition(
+                            parse().addElements(),
+                            Integer.parseInt(elements[3])
+                    ).addElements()
+            );
         }
-        return new Expression(
-                String.valueOf(
-                        new Addition(Integer.parseInt(elements[0]), Integer.parseInt(elements[1])).addElements()
-                ));
+        return new Expression(parse().addElements());
+    }
+
+    private Addition parse() {
+        String[] elements = expression.split(" ");
+        return new Addition(
+                Integer.parseInt(elements[0]),
+                Integer.parseInt(elements[1])
+        );
     }
 
     @Override
