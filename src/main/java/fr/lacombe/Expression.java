@@ -28,6 +28,12 @@ public class Expression {
     }
 
     private String getNextExpression(int firstExpression) {
+        String[] elements = expression.split(" ");
+        List<String> list = List.of(elements);
+        int index = list.indexOf("+");
+
+        list.subList(index, list.size()).stream()
+                .collect(Collectors.joining(" "));
         return firstExpression + expression.substring(5);
     }
 
