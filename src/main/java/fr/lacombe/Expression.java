@@ -4,16 +4,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static java.lang.String.*;
-import static java.util.Arrays.stream;
+import static java.lang.String.join;
+import static java.lang.String.valueOf;
 
 public class Expression {
-    private final String expression;
     private final List<String> elements;
 
     public Expression(String expression) {
         this.elements = List.of(expression.split(" "));
-        this.expression = expression;
     }
 
     private Expression(int expression) {
@@ -56,18 +54,18 @@ public class Expression {
         if (this == o) return true;
         if (!(o instanceof Expression)) return false;
         Expression that = (Expression) o;
-        return Objects.equals(expression, that.expression);
+        return elements.equals(that.elements);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(expression);
+        return Objects.hash(elements);
     }
 
     @Override
     public String toString() {
         return "Expression{" +
-                "expression='" + expression + '\'' +
+                "elements=" + elements +
                 '}';
     }
 }
