@@ -46,17 +46,17 @@ public class Expression {
     }
 
     private Predicate<String> isOperator() {
-        return element -> element.equals(Operation.OPERATOR);
+        return element -> element.equals(Operation.ADDITION) || element.equals(Operation.MULTIPLICATION);
     }
 
     private Expression getNextExpression(int firstExpression) {
-        int index = elements.indexOf(Operation.OPERATOR);
+        int index = elements.indexOf(Operation.ADDITION);
 
         return new Expression(firstExpression + DELIMITER + join(DELIMITER, elements.subList(index + 1, elements.size())));
     }
 
     private Expression getFirstExpression() {
-        int index = elements.indexOf(Operation.OPERATOR);
+        int index = elements.indexOf(Operation.ADDITION);
 
         return new Expression(elements.stream()
                 .skip(index - NUMBER_OF_OPERANDS)
