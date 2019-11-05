@@ -1,4 +1,6 @@
 import fr.lacombe.Expression;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.condition.DisabledOnOs;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -34,7 +36,7 @@ public class AppTest {
         assertThat(new Expression(entry).calculate3()).isEqualTo(new Expression(expected));
     }
 
-
+    @Disabled
     @ParameterizedTest
     @CsvSource(value = {
             "1 2 + 3 +, 6",
