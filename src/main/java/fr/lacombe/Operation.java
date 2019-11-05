@@ -19,4 +19,8 @@ class Operation {
     int multiplyElements() {
         return first * second;
     }
+
+    int operate(String operator){
+        return operator.equals(MULTIPLICATION) ? multiplyElements() : addElements();
+    }
 }

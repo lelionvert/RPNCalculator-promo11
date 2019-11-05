@@ -25,14 +25,13 @@ public class Expression {
 
     public Expression calculate() {
 
-        if (getFirstOperator().equals(MULTIPLICATION))
-        {
+        if (getFirstOperator().equals(MULTIPLICATION)) {
             if (containsMultipleOperations()) {
-                int firstExpression = getFirstExpression(MULTIPLICATION).parse().multiplyElements();
-                Expression nextExpression = getNextExpression(firstExpression, MULTIPLICATION);
+                int firstExpression = getFirstExpression(getFirstOperator()).parse().operate(getFirstOperator());
+                Expression nextExpression = getNextExpression(firstExpression, getFirstOperator());
                 return nextExpression.calculate();
             }
-            return new Expression(parse().multiplyElements());
+            return new Expression(parse().operate(getFirstOperator()));
         }
 
         if (containsMultipleOperations()) {
