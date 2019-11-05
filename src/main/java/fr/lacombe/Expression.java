@@ -26,14 +26,16 @@ public class Expression {
 
         if (elements.contains("*")){
             if (containsMultipleOperations()) {
-                return new Expression(6);
+                int firstExpression = getFirstExpression(Operation.MULTIPLICATION).parse().multiplyElements();
+                Expression nextExpression = getNextExpression(firstExpression, Operation.MULTIPLICATION);
+                return nextExpression.calculate();
             }
             return new Expression(parse().multiplyElements());
         }
 
         if (containsMultipleOperations()) {
-            int firstExpression = getFirstExpression().parse().addElements();
-            Expression nextExpression = getNextExpression(firstExpression);
+            int firstExpression = getFirstExpression(Operation.ADDITION).parse().addElements();
+            Expression nextExpression = getNextExpression(firstExpression, Operation.ADDITION);
             return nextExpression.calculate();
         }
 
@@ -49,14 +51,14 @@ public class Expression {
         return element -> element.equals(Operation.ADDITION) || element.equals(Operation.MULTIPLICATION);
     }
 
-    private Expression getNextExpression(int firstExpression) {
-        int index = elements.indexOf(Operation.ADDITION);
+    private Expression getNextExpression(int firstExpression, String operator) {
+        int index = elements.indexOf(operator);
 
         return new Expression(firstExpression + DELIMITER + join(DELIMITER, elements.subList(index + 1, elements.size())));
     }
 
-    private Expression getFirstExpression() {
-        int index = elements.indexOf(Operation.ADDITION);
+    private Expression getFirstExpression(String operator) {
+        int index = elements.indexOf(operator);
 
         return new Expression(elements.stream()
                 .skip(index - NUMBER_OF_OPERANDS)
