@@ -25,7 +25,7 @@ public class Expression {
     public Expression calculate() {
 
         if (elements.contains("*")){
-            return new Expression(2);
+            return new Expression(parse().multiplyElements());
         }
 
         if (containsMultipleOperations()) {

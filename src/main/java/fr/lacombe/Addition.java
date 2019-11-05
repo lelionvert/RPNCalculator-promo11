@@ -14,4 +14,8 @@ class Addition {
         return first
                 + second;
     }
+
+    public int multiplyElements() {
+        return first * second;
+    }
 }
