@@ -13,13 +13,9 @@ public class Expression {
         return expression;
     }
 
-    public Expression calculate3() {
-        return new Expression(String.valueOf(calculate2()));
-    }
-
-    private int calculate2() {
+    public Expression calculate() {
         String[] elements = getExpression().split(" ");
-        return Integer.parseInt(elements[0]) + Integer.parseInt(elements[1]);
+        return new Expression(String.valueOf(Integer.parseInt(elements[0]) + Integer.parseInt(elements[1])));
     }
 
     @Override
