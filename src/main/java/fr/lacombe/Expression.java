@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
+import static fr.lacombe.Operation.*;
 import static java.lang.String.join;
 import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.joining;
@@ -24,22 +25,27 @@ public class Expression {
 
     public Expression calculate() {
 
-        if (elements.contains("*")){
+        if (getFirstOperator().equals(MULTIPLICATION))
+        {
             if (containsMultipleOperations()) {
-                int firstExpression = getFirstExpression(Operation.MULTIPLICATION).parse().multiplyElements();
-                Expression nextExpression = getNextExpression(firstExpression, Operation.MULTIPLICATION);
+                int firstExpression = getFirstExpression(MULTIPLICATION).parse().multiplyElements();
+                Expression nextExpression = getNextExpression(firstExpression, MULTIPLICATION);
                 return nextExpression.calculate();
             }
             return new Expression(parse().multiplyElements());
         }
 
         if (containsMultipleOperations()) {
-            int firstExpression = getFirstExpression(Operation.ADDITION).parse().addElements();
-            Expression nextExpression = getNextExpression(firstExpression, Operation.ADDITION);
+            int firstExpression = getFirstExpression(ADDITION).parse().addElements();
+            Expression nextExpression = getNextExpression(firstExpression, ADDITION);
             return nextExpression.calculate();
         }
 
         return new Expression(parse().addElements());
+    }
+
+    private String getFirstOperator() {
+        return elements.stream().filter(isOperator()).findFirst().get();
     }
 
     private boolean containsMultipleOperations() {
@@ -48,7 +54,7 @@ public class Expression {
     }
 
     private Predicate<String> isOperator() {
-        return element -> element.equals(Operation.ADDITION) || element.equals(Operation.MULTIPLICATION);
+        return element -> element.equals(ADDITION) || element.equals(MULTIPLICATION);
     }
 
     private Expression getNextExpression(int firstExpression, String operator) {
