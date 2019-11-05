@@ -20,7 +20,7 @@ public class Expression {
 
     public Expression calculate() {
 
-        if (containsMultipleOperands()) {
+        if (containsMultipleOperations()) {
             int firstExpression = getFirstExpression().parse().addElements();
             Expression nextExpression = getNextExpression(firstExpression);
             return nextExpression.calculate();
@@ -29,7 +29,7 @@ public class Expression {
         return new Expression(parse().addElements());
     }
 
-    private boolean containsMultipleOperands() {
+    private boolean containsMultipleOperations() {
         return elements.size() > 3;
     }
 
