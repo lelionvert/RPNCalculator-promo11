@@ -20,13 +20,17 @@ public class Expression {
 
     public Expression calculate() {
 
-        if (elements.size() > 3) {
+        if (containsMultipleOperands()) {
             int firstExpression = getFirstExpression().parse().addElements();
             Expression nextExpression = getNextExpression(firstExpression);
             return nextExpression.calculate();
         }
 
         return new Expression(parse().addElements());
+    }
+
+    private boolean containsMultipleOperands() {
+        return elements.size() > 3;
     }
 
     private Expression getNextExpression(int firstExpression) {
