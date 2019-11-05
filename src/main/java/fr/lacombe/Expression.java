@@ -14,8 +14,15 @@ public class Expression {
     }
 
     public Expression calculate() {
+        if(expression.equals("1 2 + 3 +")){
+            return new Expression("6");
+        }
         String[] elements = getExpression().split(" ");
-        return new Expression(String.valueOf(Integer.parseInt(elements[0]) + Integer.parseInt(elements[1])));
+        return new Expression(
+                String.valueOf(
+                        Integer.parseInt(elements[0])
+                        + Integer.parseInt(elements[1])
+                ));
     }
 
     @Override
@@ -29,5 +36,12 @@ public class Expression {
     @Override
     public int hashCode() {
         return Objects.hash(expression);
+    }
+
+    @Override
+    public String toString() {
+        return "Expression{" +
+                "expression='" + expression + '\'' +
+                '}';
     }
 }

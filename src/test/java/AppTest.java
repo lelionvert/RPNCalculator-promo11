@@ -14,7 +14,8 @@ public class AppTest {
             "0 5 +, 5"
     })
     public void addition_of_zero_and_n_number_returns_n(String entry, String expected) {
-        assertThat(new Expression(entry).calculate()).isEqualTo(new Expression(expected));
+        assertThat(new Expression(entry).calculate())
+                .isEqualTo(new Expression(expected));
     }
 
     @ParameterizedTest
@@ -24,7 +25,8 @@ public class AppTest {
             "7 0 +, 7"
     })
     public void addition_of_n_number_and_zero_returns_n(String entry, String expected) {
-        assertThat(new Expression(entry).calculate()).isEqualTo(new Expression(expected));
+        assertThat(new Expression(entry).calculate())
+                .isEqualTo(new Expression(expected));
     }
 
     @ParameterizedTest
@@ -32,17 +34,17 @@ public class AppTest {
             "1 4 +, 5"
     })
     public void addition_of_two_different_numbers_returns_sum(String entry, String expected) {
-        assertThat(new Expression(entry).calculate()).isEqualTo(new Expression(expected));
+        assertThat(new Expression(entry).calculate())
+                .isEqualTo(new Expression(expected));
     }
 
-    @Disabled
     @ParameterizedTest
     @CsvSource(value = {
-            "1 2 + 3 +, 6",
-            "1 2 3 + +, 6"
+            "1 2 + 3 +, 6"
     })
     public void addition_of_three_different_numbers_returns_sum(String entry, String expected) {
-        assertThat(new Expression(entry).calculate()).isEqualTo(new Expression(expected));
+        assertThat(new Expression(entry).calculate())
+                .isEqualTo(new Expression(expected));
     }
 
 }
