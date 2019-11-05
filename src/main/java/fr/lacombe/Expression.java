@@ -31,17 +31,15 @@ public class Expression {
     }
 
     private Expression getNextExpression(int firstExpression) {
-        List<String> elements = List.of(expression.split(" "));
         int index = elements.indexOf("+");
 
         return new Expression(firstExpression + " " + join(" ", elements.subList(index + 1, elements.size())));
     }
 
     private Expression getFirstExpression() {
-        String[] elements = expression.split(" ");
-        int index = List.of(elements).indexOf("+");
+        int index = elements.indexOf("+");
 
-        return new Expression(stream(elements)
+        return new Expression(elements.stream()
                 .skip(index - 2)
                 .limit(3)
                 .collect(Collectors.joining(" ")));
