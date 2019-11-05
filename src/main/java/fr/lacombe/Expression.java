@@ -20,7 +20,11 @@ public class Expression {
 
     public Expression calculate() {
         if (elements.size() > 5) {
-            return new Expression("10");
+            int firstExpression = getFirstExpression().parse().addElements();
+            Expression nextExpression = getNextExpression(firstExpression);
+            firstExpression = nextExpression.getFirstExpression().parse().addElements();
+            nextExpression =  nextExpression.getNextExpression(firstExpression);
+            return new Expression(nextExpression.parse().addElements());
         }
 
         if (elements.size() > 3) {
