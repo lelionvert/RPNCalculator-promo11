@@ -23,19 +23,16 @@ public class Expression {
     }
 
     public Expression calculate() {
+        String firstOperator = getFirstOperator().operator;
         if (containsMultipleOperations()) {
-            int firstExpression = getFirstExpression(getFirstOperator()).parse().operate(getFirstOperator());
-            Expression nextExpression = getNextExpression(firstExpression, getFirstOperator());
+            int firstExpression = getFirstExpression(firstOperator).parse().operate(firstOperator);
+            Expression nextExpression = getNextExpression(firstExpression, firstOperator);
             return nextExpression.calculate();
         }
-        return new Expression(parse().operate(getFirstOperator()));
+        return new Expression(parse().operate(firstOperator));
     }
 
-    private String getFirstOperator() {
-        return elements.stream().filter(Operator.isOperator()).findFirst().get();
-    }
-
-    private Operator getFirstOperator2() {
+    private Operator getFirstOperator() {
         return elements.stream()
                 .map(Operator::of)
                 .filter(Optional::isPresent)
