@@ -12,7 +12,7 @@ public enum Operator {
     private static final List<Operator> values = List.of(values());
     public final String operator;
     public final Function<Operation, Integer> operation;
-    public final BiFunction<Integer, Integer, Operation> operationParser;
+    private final BiFunction<Integer, Integer, Operation> operationParser;
 
     Operator(String operator, Function<Operation, Integer> operation, BiFunction<Integer, Integer, Operation> operationParser) {
         this.operator = operator;
