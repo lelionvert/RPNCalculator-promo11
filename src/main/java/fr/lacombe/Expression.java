@@ -30,7 +30,7 @@ public class Expression {
             Expression nextExpression = getNextExpression(firstExpression, firstOperator);
             return nextExpression.calculate();
         }
-        return new Expression(parse().operate(firstOperator));
+        return new Expression(operator.operation.apply(parse()));
     }
 
     private Operator getFirstOperator() {
