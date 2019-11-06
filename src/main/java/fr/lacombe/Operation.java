@@ -9,11 +9,11 @@ class Operation {
         this.second = second;
     }
 
-    private int addElements() {
+    public int addElements() {
         return first + second;
     }
 
-    private int multiplyElements() {
+    public int multiplyElements() {
         return first * second;
     }
 

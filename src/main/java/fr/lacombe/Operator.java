@@ -2,18 +2,17 @@ package fr.lacombe;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BinaryOperator;
-import java.util.function.Predicate;
+import java.util.function.Function;
 
 public enum Operator {
-    MULTIPLICATION("*", (a, b) -> a * b),
-    ADDITION("+", (a, b) -> a + b);
+    MULTIPLICATION("*", Operation::multiplyElements),
+    ADDITION("+", Operation::addElements);
 
     private static final List<Operator> values = List.of(values());
     public final String operator;
-    private final BinaryOperator<Integer> operation;
+    private final Function<Operation, Integer> operation;
 
-    Operator(String operator, BinaryOperator<Integer> operation) {
+    Operator(String operator, Function<Operation, Integer> operation) {
         this.operator = operator;
         this.operation = operation;
     }
