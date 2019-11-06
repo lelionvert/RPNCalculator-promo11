@@ -69,6 +69,17 @@ public class Expression {
         );
     }
 
+    private Operation2 parse2() {
+        if(getFirstOperator().equals(Operator.ADDITION)){
+            return  new Addition(Integer.parseInt(elements.get(0)),
+                    Integer.parseInt(elements.get(1)));
+        }
+        return new Multiplication(
+                Integer.parseInt(elements.get(0)),
+                Integer.parseInt(elements.get(1))
+        );
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
