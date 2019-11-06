@@ -26,14 +26,17 @@ public class Expression {
         Operator operator = getFirstOperator();
         String firstOperator = operator.operator;
         if (containsMultipleOperations()) {
-            Expression firstExpression = getFirstExpression(firstOperator);
-            Expression firstResultExpression = firstExpression.calculate();
-            int index = elements.indexOf(firstOperator);
-
-            Expression nextExpression = new Expression(firstResultExpression + DELIMITER + join(DELIMITER, elements.subList(index + 1, elements.size())));
+            Expression firstExpression = getFirstExpression(firstOperator).calculate();
+            Expression nextExpression = getNextExpression(firstOperator, firstExpression);
             return nextExpression.calculate();
         }
         return new Expression(operator.parse(elements).operate());
+    }
+
+    private Expression getNextExpression(String firstOperator, Expression firstExpression) {
+        int operatorIndex = elements.indexOf(firstOperator);
+
+        return new Expression(firstExpression + DELIMITER + join(DELIMITER, elements.subList(operatorIndex + 1, elements.size())));
     }
 
     private Operator getFirstOperator() {
