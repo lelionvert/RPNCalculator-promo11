@@ -1,6 +1,7 @@
 package fr.lacombe;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
 
@@ -19,5 +20,9 @@ public enum Operator {
 
     static Predicate<String> isOperator() {
         return element -> values.stream().map(o -> o.operator).anyMatch(element::equals);
+    }
+
+    static Optional<Operator> of(String element) {
+        return values.stream().filter(o -> o.operator.equals(element)).findFirst();
     }
 }
