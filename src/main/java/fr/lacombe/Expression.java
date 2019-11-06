@@ -24,10 +24,10 @@ public class Expression {
 
     public Expression calculate() {
         Operator operator = getFirstOperator();
-        String firstOperator = operator.operator;
         if (containsMultipleOperations()) {
+            String firstOperator = operator.operator;
             Expression firstExpression = getFirstExpression(firstOperator).calculate();
-            Expression nextExpression = getNextExpression(firstOperator, firstExpression);
+            Expression nextExpression = getNextExpression(operator, firstExpression);
             return nextExpression.calculate();
         }
         return new Expression(operator.parse(elements).operate());
@@ -35,6 +35,12 @@ public class Expression {
 
     private Expression getNextExpression(String firstOperator, Expression firstExpression) {
         int operatorIndex = elements.indexOf(firstOperator);
+
+        return new Expression(firstExpression + DELIMITER + join(DELIMITER, elements.subList(operatorIndex + 1, elements.size())));
+    }
+
+    private Expression getNextExpression(Operator firstOperator, Expression firstExpression) {
+        int operatorIndex = elements.indexOf(firstOperator.operator);
 
         return new Expression(firstExpression + DELIMITER + join(DELIMITER, elements.subList(operatorIndex + 1, elements.size())));
     }
