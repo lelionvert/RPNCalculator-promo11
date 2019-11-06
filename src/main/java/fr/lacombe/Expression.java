@@ -33,7 +33,7 @@ public class Expression {
     }
 
     private Expression getNextExpression(Operator firstOperator, Expression firstExpression) {
-        int operatorIndex = elements.indexOf(firstOperator.operator);
+        int operatorIndex = firstOperator.getOperatorIndex(elements);
 
         return new Expression(firstExpression + DELIMITER + join(DELIMITER, elements.subList(operatorIndex + 1, elements.size())));
     }
@@ -53,7 +53,7 @@ public class Expression {
     }
 
     private Expression getFirstExpression(Operator operator) {
-        int index = elements.indexOf(operator.operator);
+        int index = operator.getOperatorIndex(elements);
 
         return new Expression(elements.stream()
                 .skip(index - NUMBER_OF_OPERANDS)

@@ -33,4 +33,8 @@ public enum Operator {
         int second = Integer.parseInt(elements.get(1));
         return operationParser.apply(first, second);
     }
+
+    int getOperatorIndex(List<String> elements) {
+        return elements.indexOf(this.operator);
+    }
 }
