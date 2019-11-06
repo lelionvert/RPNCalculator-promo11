@@ -1,7 +1,6 @@
 package fr.lacombe;
 
 class Operation {
-    public static final String MULTIPLICATION = "*" ;
     static final String ADDITION = "+";
     private final int first;
     private final int second;
@@ -21,6 +20,6 @@ class Operation {
     }
 
     int operate(String operator){
-        return operator.equals(MULTIPLICATION) ? multiplyElements() : addElements();
+        return operator.equals(OperationType.MULTIPLICATION.operator) ? multiplyElements() : addElements();
     }
 }

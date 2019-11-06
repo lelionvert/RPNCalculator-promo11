@@ -5,7 +5,6 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 import static fr.lacombe.Operation.ADDITION;
-import static fr.lacombe.Operation.MULTIPLICATION;
 import static java.lang.String.join;
 import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.joining;
@@ -43,7 +42,7 @@ public class Expression {
     }
 
     private Predicate<String> isOperator() {
-        return element -> element.equals(ADDITION) || element.equals(MULTIPLICATION);
+        return element -> element.equals(ADDITION) || element.equals(OperationType.MULTIPLICATION.operator);
     }
 
     private Expression getNextExpression(int firstExpression, String operator) {
