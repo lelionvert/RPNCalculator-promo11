@@ -11,11 +11,4 @@ abstract class Operation2 {
 
     public abstract int operate();
 
-    public int addElements() {
-        return first + second;
-    }
-
-    public int multiplyElements() {
-        return first * second;
-    }
 }
