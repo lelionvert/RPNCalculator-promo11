@@ -62,7 +62,7 @@ public class Expression {
                 .collect(joining(DELIMITER)));
     }
 
-    private Operation2 parse() {
+    private Operation parse() {
         if(getFirstOperator().equals(Operator.ADDITION)){
             return  new Addition(Integer.parseInt(elements.get(0)),
                     Integer.parseInt(elements.get(1)));

@@ -1,6 +1,6 @@
 package fr.lacombe;
 
-class Operation {
+abstract class Operation {
     final int first;
     final int second;
 
@@ -9,11 +9,6 @@ class Operation {
         this.second = second;
     }
 
-    public int addElements() {
-        return first + second;
-    }
+    public abstract int operate();
 
-    public int multiplyElements() {
-        return first * second;
-    }
 }

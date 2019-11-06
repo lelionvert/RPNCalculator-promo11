@@ -1,6 +1,6 @@
 package fr.lacombe;
 
-public class Multiplication extends Operation2 {
+public class Multiplication extends Operation {
     Multiplication(int first, int second) {
         super(first, second);
     }
