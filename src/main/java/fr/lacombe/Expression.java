@@ -26,11 +26,11 @@ public class Expression {
         Operator operator = getFirstOperator();
         String firstOperator = operator.operator;
         if (containsMultipleOperations()) {
-            int firstExpression = (int) operator.operation.apply(getFirstExpression(firstOperator).parse());
+            int firstExpression = (int) operator.operation.apply(getFirstExpression(firstOperator).getFirstOperator().parse(getFirstExpression(firstOperator).elements));
             Expression nextExpression = getNextExpression(firstExpression, firstOperator);
             return nextExpression.calculate();
         }
-        return new Expression(operator.operation.apply(parse()));
+        return new Expression(operator.operation.apply(getFirstOperator().parse(elements)));
     }
 
     private Operator getFirstOperator() {
@@ -60,17 +60,6 @@ public class Expression {
                 .skip(index - NUMBER_OF_OPERANDS)
                 .limit(OPERATION_SIZE)
                 .collect(joining(DELIMITER)));
-    }
-
-    private Operation parse() {
-        if(getFirstOperator().equals(Operator.ADDITION)){
-            return  new Addition(Integer.parseInt(elements.get(0)),
-                    Integer.parseInt(elements.get(1)));
-        }
-        return new Multiplication(
-                Integer.parseInt(elements.get(0)),
-                Integer.parseInt(elements.get(1))
-        );
     }
 
     @Override

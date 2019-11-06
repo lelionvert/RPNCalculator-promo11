@@ -24,4 +24,15 @@ public enum Operator {
     static Optional<Operator> of(String element) {
         return values.stream().filter(o -> o.operator.equals(element)).findFirst();
     }
+
+    Operation parse(List<String> elements) {
+        if(equals(ADDITION)){
+            return  new Addition(Integer.parseInt(elements.get(0)),
+                    Integer.parseInt(elements.get(1)));
+        }
+        return new Multiplication(
+                Integer.parseInt(elements.get(0)),
+                Integer.parseInt(elements.get(1))
+        );
+    }
 }
