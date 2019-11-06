@@ -9,16 +9,15 @@ class Operation {
         this.second = second;
     }
 
-    int addElements() {
-        return first
-                + second;
+    private int addElements() {
+        return first + second;
     }
 
-    int multiplyElements() {
+    private int multiplyElements() {
         return first * second;
     }
 
-    int operate(String operator){
+    int operate(String operator) {
         return operator.equals(Operator.MULTIPLICATION.operator) ? multiplyElements() : addElements();
     }
 }
