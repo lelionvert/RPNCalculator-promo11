@@ -1,7 +1,7 @@
 package fr.lacombe;
 
 public enum OperationType {
-    MULTIPLICATION( "*");
+    MULTIPLICATION( "*"), ADDITION("+");
 
     public final String operator;
 

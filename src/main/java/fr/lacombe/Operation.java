@@ -1,7 +1,6 @@
 package fr.lacombe;
 
 class Operation {
-    static final String ADDITION = "+";
     private final int first;
     private final int second;
 
