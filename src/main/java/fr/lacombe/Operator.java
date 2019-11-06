@@ -7,6 +7,7 @@ import java.util.function.Function;
 
 public enum Operator {
     MULTIPLICATION("*", Operation::operate, Multiplication::new),
+    DIVISION("/", Operation::operate, Division::new),
     ADDITION("+", Operation::operate, Addition::new);
 
     private static final List<Operator> values = List.of(values());
