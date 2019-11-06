@@ -1,15 +1,14 @@
 package fr.lacombe;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
 public enum Operator {
-    MULTIPLICATION( "*"),
+    MULTIPLICATION("*"),
     ADDITION("+");
 
-    public final String operator;
     private static final List<Operator> values = List.of(values());
+    public final String operator;
 
     Operator(String operator) {
         this.operator = operator;
