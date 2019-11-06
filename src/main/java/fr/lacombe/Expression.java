@@ -26,12 +26,12 @@ public class Expression {
         Operator operator = getFirstOperator();
         String firstOperator = operator.operator;
         if (containsMultipleOperations()) {
-            Expression firstExpression1 = getFirstExpression(firstOperator);
-            int firstExpression = firstExpression1.getFirstOperator().parse(firstExpression1.elements).operate();
-            Expression nextExpression = getNextExpression(firstExpression, firstOperator);
+            Expression firstExpression = getFirstExpression(firstOperator);
+            int firstResult = firstExpression.getFirstOperator().parse(firstExpression.elements).operate();
+            Expression nextExpression = getNextExpression(firstResult, firstOperator);
             return nextExpression.calculate();
         }
-        return new Expression(getFirstOperator().parse(elements).operate());
+        return new Expression(operator.parse(elements).operate());
     }
 
     private Operator getFirstOperator() {
