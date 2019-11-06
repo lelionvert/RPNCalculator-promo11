@@ -34,15 +34,15 @@ public class Expression {
 
     private Operator getFirstOperator() {
         return elements.stream()
+                .filter(Operator::isOperator)
                 .map(Operator::of)
-                .filter(Optional::isPresent)
                 .map(Optional::get)
                 .findFirst()
                 .get();
     }
 
     private boolean containsMultipleOperations() {
-        return elements.stream().filter(Operator.isOperator())
+        return elements.stream().filter(Operator::isOperator)
                 .count() > 1;
     }
 

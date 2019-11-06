@@ -18,8 +18,8 @@ public enum Operator {
         this.operation = operation;
     }
 
-    static Predicate<String> isOperator() {
-        return element -> values.stream().map(o -> o.operator).anyMatch(element::equals);
+    static boolean isOperator(String element) {
+        return values.stream().map(o -> o.operator).anyMatch(element::equals);
     }
 
     static Optional<Operator> of(String element) {
