@@ -1,13 +1,15 @@
 package fr.lacombe;
 
-class Operation {
+abstract class Operation2 {
     final int first;
     final int second;
 
-    Operation(int first, int second) {
+    Operation2(int first, int second) {
         this.first = first;
         this.second = second;
     }
+
+    public abstract int operate();
 
     public int addElements() {
         return first + second;
