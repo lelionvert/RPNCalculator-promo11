@@ -25,17 +25,24 @@ public class Expression {
     public Expression calculate() {
         Operator operator = getFirstOperator();
         if (containsMultipleOperations()) {
-            Expression firstExpression = getFirstExpression(operator).calculate();
-            Expression nextExpression = getNextExpression(operator, firstExpression);
+            Expression firstExpression = getFirstExpression(operator.getOperatorIndex(elements)).calculate();
+            Expression nextExpression = getNextExpression(firstExpression, operator.getOperatorIndex(elements));
             return nextExpression.calculate();
         }
         return new Expression(operator.parse(elements).operate());
     }
 
-    private Expression getNextExpression(Operator firstOperator, Expression firstExpression) {
-        int operatorIndex = firstOperator.getOperatorIndex(elements);
+    private Expression getNextExpression(Expression firstExpression, int operatorIndex) {
 
         return new Expression(firstExpression + DELIMITER + join(DELIMITER, elements.subList(operatorIndex + 1, elements.size())));
+    }
+
+    private Expression getFirstExpression(int operatorIndex) {
+
+        return new Expression(elements.stream()
+                .skip(operatorIndex - NUMBER_OF_OPERANDS)
+                .limit(OPERATION_SIZE)
+                .collect(joining(DELIMITER)));
     }
 
     private Operator getFirstOperator() {
@@ -50,15 +57,6 @@ public class Expression {
     private boolean containsMultipleOperations() {
         return elements.stream().filter(Operator::isOperator)
                 .count() > 1;
-    }
-
-    private Expression getFirstExpression(Operator operator) {
-        int index = operator.getOperatorIndex(elements);
-
-        return new Expression(elements.stream()
-                .skip(index - NUMBER_OF_OPERANDS)
-                .limit(OPERATION_SIZE)
-                .collect(joining(DELIMITER)));
     }
 
     @Override
