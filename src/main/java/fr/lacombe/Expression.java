@@ -23,8 +23,6 @@ public class Expression {
     }
 
     public Expression calculate() {
-        if (elements.contains("/"))
-            return new Expression("2");
         Operator operator = getFirstOperator();
         if (containsMultipleOperations()) {
             Expression firstExpression = getFirstExpression(operator.getOperatorIndex(elements)).calculate();
