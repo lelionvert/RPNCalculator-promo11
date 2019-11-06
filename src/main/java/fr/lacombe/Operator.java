@@ -5,14 +5,14 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public enum Operator {
-    MULTIPLICATION("*", Operation::multiplyElements),
-    ADDITION("+", Operation::addElements);
+    MULTIPLICATION("*", Operation2::operate),
+    ADDITION("+", Operation2::operate);
 
     private static final List<Operator> values = List.of(values());
     public final String operator;
-    public final Function<Operation, Integer> operation;
+    public final Function<Operation2, Integer> operation;
 
-    Operator(String operator, Function<Operation, Integer> operation) {
+    Operator(String operator, Function<Operation2, Integer> operation) {
         this.operator = operator;
         this.operation = operation;
     }
