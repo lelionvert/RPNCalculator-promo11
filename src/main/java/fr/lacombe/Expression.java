@@ -26,7 +26,8 @@ public class Expression {
         Operator operator = getFirstOperator();
         String firstOperator = operator.operator;
         if (containsMultipleOperations()) {
-            int firstExpression = (int) operator.operation.apply(getFirstExpression(firstOperator).getFirstOperator().parse(getFirstExpression(firstOperator).elements));
+            Expression firstExpression1 = getFirstExpression(firstOperator);
+            int firstExpression = firstExpression1.getFirstOperator().parse(firstExpression1.elements).operate();
             Expression nextExpression = getNextExpression(firstExpression, firstOperator);
             return nextExpression.calculate();
         }
