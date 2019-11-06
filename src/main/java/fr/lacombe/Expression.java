@@ -27,8 +27,10 @@ public class Expression {
         String firstOperator = operator.operator;
         if (containsMultipleOperations()) {
             Expression firstExpression = getFirstExpression(firstOperator);
-            int firstResult = firstExpression.getFirstOperator().parse(firstExpression.elements).operate();
-            Expression nextExpression = getNextExpression(firstResult, firstOperator);
+            Expression firstResultExpression = firstExpression.calculate();
+            int index = elements.indexOf(firstOperator);
+
+            Expression nextExpression = new Expression(firstResultExpression + DELIMITER + join(DELIMITER, elements.subList(index + 1, elements.size())));
             return nextExpression.calculate();
         }
         return new Expression(operator.parse(elements).operate());
@@ -46,12 +48,6 @@ public class Expression {
     private boolean containsMultipleOperations() {
         return elements.stream().filter(Operator::isOperator)
                 .count() > 1;
-    }
-
-    private Expression getNextExpression(int firstExpression, String operator) {
-        int index = elements.indexOf(operator);
-
-        return new Expression(firstExpression + DELIMITER + join(DELIMITER, elements.subList(index + 1, elements.size())));
     }
 
     private Expression getFirstExpression(String operator) {
