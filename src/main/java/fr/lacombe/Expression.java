@@ -2,6 +2,7 @@ package fr.lacombe;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import static java.lang.String.join;
 import static java.lang.String.valueOf;
@@ -32,6 +33,15 @@ public class Expression {
 
     private String getFirstOperator() {
         return elements.stream().filter(Operator.isOperator()).findFirst().get();
+    }
+
+    private Operator getFirstOperator2() {
+        return elements.stream()
+                .map(Operator::of)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .findFirst()
+                .get();
     }
 
     private boolean containsMultipleOperations() {
