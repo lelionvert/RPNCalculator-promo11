@@ -23,6 +23,9 @@ public class Expression {
     }
 
     public Expression calculate() {
+        if (elements.contains("/") && elements.contains("0")){
+            return new Expression("INVALID");
+        }
         Operator operator = getFirstOperator();
         if (containsMultipleOperations()) {
             Expression firstExpression = getFirstExpression(operator.getOperatorIndex(elements)).calculate();

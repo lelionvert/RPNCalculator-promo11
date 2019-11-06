@@ -60,7 +60,8 @@ public class AppTest {
     @ParameterizedTest
     @CsvSource(value = {
             "8 4 /, 2",
-            "4 2 / 2 /, 1"
+            "4 2 / 2 /, 1",
+            "4 0 /, INVALID"
     })
     void division_of_multiple_different_numbers_return_quotient(String entry, String expected) {
         assertThat(new Expression(entry).calculate()).isEqualTo(new Expression(expected));
