@@ -2,7 +2,6 @@ package fr.lacombe;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Predicate;
 
 import static java.lang.String.join;
 import static java.lang.String.valueOf;
@@ -32,16 +31,12 @@ public class Expression {
     }
 
     private String getFirstOperator() {
-        return elements.stream().filter(isOperator()).findFirst().get();
+        return elements.stream().filter(OperationType.isOperator()).findFirst().get();
     }
 
     private boolean containsMultipleOperations() {
-        return elements.stream().filter(isOperator())
+        return elements.stream().filter(OperationType.isOperator())
                 .count() > 1;
-    }
-
-    private Predicate<String> isOperator() {
-        return element -> element.equals(OperationType.ADDITION.operator) || element.equals(OperationType.MULTIPLICATION.operator);
     }
 
     private Expression getNextExpression(int firstExpression, String operator) {
