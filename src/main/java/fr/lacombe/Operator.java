@@ -10,7 +10,7 @@ public enum Operator {
 
     private static final List<Operator> values = List.of(values());
     public final String operator;
-    private final Function<Operation, Integer> operation;
+    public final Function<Operation, Integer> operation;
 
     Operator(String operator, Function<Operation, Integer> operation) {
         this.operator = operator;

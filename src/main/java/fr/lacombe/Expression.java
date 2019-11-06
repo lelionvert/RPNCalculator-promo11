@@ -23,9 +23,10 @@ public class Expression {
     }
 
     public Expression calculate() {
-        String firstOperator = getFirstOperator().operator;
+        Operator operator = getFirstOperator();
+        String firstOperator = operator.operator;
         if (containsMultipleOperations()) {
-            int firstExpression = getFirstExpression(firstOperator).parse().operate(firstOperator);
+            int firstExpression = operator.operation.apply(getFirstExpression(firstOperator).parse());
             Expression nextExpression = getNextExpression(firstExpression, firstOperator);
             return nextExpression.calculate();
         }
