@@ -56,4 +56,12 @@ public class AppTest {
     void multiplication_of_multiple_different_numbers_return_product(String entry, String expected) {
         assertThat(new Expression(entry).calculate()).isEqualTo(new Expression(expected));
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "8 4 /, 2"
+    })
+    void division_of_multiple_different_numbers_return_quotient(String entry, String expected) {
+        assertThat(new Expression(entry).calculate()).isEqualTo(new Expression(expected));
+    }
 }
