@@ -25,7 +25,6 @@ public class Expression {
     public Expression calculate() {
         Operator operator = getFirstOperator();
         if (containsMultipleOperations()) {
-            String firstOperator = operator.operator;
             Expression firstExpression = getFirstExpression(operator).calculate();
             Expression nextExpression = getNextExpression(operator, firstExpression);
             return nextExpression.calculate();
