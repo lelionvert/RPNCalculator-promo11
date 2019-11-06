@@ -12,12 +12,12 @@ public enum Operator {
     private static final List<Operator> values = List.of(values());
     public final String operator;
     public final Function<Operation, Integer> operation;
-    public final BiFunction<Integer, Integer, Operation> operation2;
+    public final BiFunction<Integer, Integer, Operation> operationParser;
 
-    Operator(String operator, Function<Operation, Integer> operation, BiFunction<Integer, Integer, Operation> operation2) {
+    Operator(String operator, Function<Operation, Integer> operation, BiFunction<Integer, Integer, Operation> operationParser) {
         this.operator = operator;
         this.operation = operation;
-        this.operation2 = operation2;
+        this.operationParser = operationParser;
     }
 
     static boolean isOperator(String element) {
@@ -31,6 +31,6 @@ public enum Operator {
     Operation parse(List<String> elements) {
         int first = Integer.parseInt(elements.get(0));
         int second = Integer.parseInt(elements.get(1));
-        return operation2.apply(first, second);
+        return operationParser.apply(first, second);
     }
 }
