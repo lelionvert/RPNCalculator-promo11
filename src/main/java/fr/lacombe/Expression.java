@@ -78,8 +78,6 @@ public class Expression {
 
     @Override
     public String toString() {
-        return "Expression{" +
-                "elements=" + elements +
-                '}';
+        return join(DELIMITER, elements);
     }
 }
