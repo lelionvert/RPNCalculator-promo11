@@ -19,6 +19,6 @@ class Operation {
     }
 
     int operate(String operator){
-        return operator.equals(OperationType.MULTIPLICATION.operator) ? multiplyElements() : addElements();
+        return operator.equals(Operator.MULTIPLICATION.operator) ? multiplyElements() : addElements();
     }
 }

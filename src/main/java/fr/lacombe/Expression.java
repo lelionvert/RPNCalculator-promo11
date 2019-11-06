@@ -31,11 +31,11 @@ public class Expression {
     }
 
     private String getFirstOperator() {
-        return elements.stream().filter(OperationType.isOperator()).findFirst().get();
+        return elements.stream().filter(Operator.isOperator()).findFirst().get();
     }
 
     private boolean containsMultipleOperations() {
-        return elements.stream().filter(OperationType.isOperator())
+        return elements.stream().filter(Operator.isOperator())
                 .count() > 1;
     }
 
