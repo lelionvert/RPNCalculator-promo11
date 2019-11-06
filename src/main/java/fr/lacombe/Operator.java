@@ -29,13 +29,8 @@ public enum Operator {
     }
 
     Operation parse(List<String> elements) {
-        if(equals(ADDITION)){
-            return  new Addition(Integer.parseInt(elements.get(0)),
-                    Integer.parseInt(elements.get(1)));
-        }
-        return new Multiplication(
-                Integer.parseInt(elements.get(0)),
-                Integer.parseInt(elements.get(1))
-        );
+        int first = Integer.parseInt(elements.get(0));
+        int second = Integer.parseInt(elements.get(1));
+        return operation2.apply(first, second);
     }
 }
